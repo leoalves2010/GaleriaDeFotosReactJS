@@ -2,6 +2,7 @@ import * as C from "./App.styles";
 import * as Photos from "./services/photos";
 import React from "react";
 import { Photo } from "./types/Photo";
+import PhotoItem from "./components/PhotoItem";
 
 const App = () => {
     const [loading, setLoading] = React.useState(false);
@@ -32,7 +33,7 @@ const App = () => {
                 {!loading && photoList.length > 0 && (
                     <C.PhotoList>
                         {photoList.map((item, index) => (
-                            <div>{item.name}</div>
+                            <PhotoItem key={index} item={item} />
                         ))}
                     </C.PhotoList>
                 )}

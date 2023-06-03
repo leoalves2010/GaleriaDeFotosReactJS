@@ -40,6 +40,18 @@ const App = () => {
         }
     };
 
+    const handleRemove = async (photo: Photo) => {
+        let result = await Photos.remove(photo);
+        if (result instanceof Error) {
+            alert(`${result.name}: ${result.message}`);
+        } else {
+            alert("Foto removida com sucesso.");
+            setLoading(true);
+            setPhotoList(await Photos.getAll());
+            setLoading(false);
+        }
+    };
+
     return (
         <C.Container>
             <C.Area>
@@ -61,7 +73,11 @@ const App = () => {
                 {!loading && photoList.length > 0 && (
                     <C.PhotoList>
                         {photoList.map((item, index) => (
-                            <PhotoItem key={index} item={item} />
+                            <PhotoItem
+                                key={index}
+                                item={item}
+                                remove={handleRemove}
+                            />
                         ))}
                     </C.PhotoList>
                 )}

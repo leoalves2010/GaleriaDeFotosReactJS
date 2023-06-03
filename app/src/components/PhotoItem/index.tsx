@@ -4,13 +4,17 @@ import { Photo } from "../../types/Photo";
 
 type Props = {
     item: Photo;
+    remove: (photo: Photo) => void;
 };
 
-const PhotoItem = ({ item }: Props) => {
+const PhotoItem = ({ item, remove }: Props) => {
     return (
         <C.Container>
             <img src={item.url} alt={item.name} />
-            {item.name}
+            <div>{item.name}</div>
+            <div className="excluir" onClick={() => remove(item)}>
+                Excluir
+            </div>
         </C.Container>
     );
 };

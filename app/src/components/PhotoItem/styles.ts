@@ -11,4 +11,18 @@ export const Container = styled.div`
         margin-bottom: 10px;
         border-radius: 10px;
     }
+
+    .excluir {
+        display: inline-block;
+        background-color: #ca1e1e;
+        border-radius: 5px;
+        padding: 7px;
+        font-size: 10px;
+        cursor: pointer;
+        margin-top: 5px;
+
+        &:hover {
+            opacity: 0.9;
+        }
+    }
 `;
